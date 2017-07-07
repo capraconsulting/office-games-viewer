@@ -39,3 +39,8 @@
 .last-games .game {
   padding: 0.4vw;
 }
+
+.highscore {
+  font-size: 7vw;
+  text-align: center;
+}
