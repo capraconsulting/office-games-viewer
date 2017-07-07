@@ -5,6 +5,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "firebase": "^4.1.3",
+    "moment": "^2.18.1",
     "re-base": "^3.0.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
