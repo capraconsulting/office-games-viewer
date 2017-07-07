@@ -110,8 +110,10 @@ class App extends Component {
             </div>
           </Col>
           <Col xs={6}>
-            <div className="highscore">
+            <div className="highscore-header">
               {"Highscore"}
+            </div>
+            <div className="highscore">
               {
                 topTenRating ?
                   topTenRating.reverse().map((player, index) => (
