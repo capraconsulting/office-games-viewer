@@ -1,12 +1,33 @@
-.App {
+.game-status {
+  font-size: 7vw;
   text-align: center;
 }
 
-.App-intro {
-  font-size: large;
+.game-active {
+  background-color: green;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.game-waiting {
+  background-color: red;
+}
+
+.player-registered {
+  background-color: green;
+}
+
+.player {
+  padding: 3vh;
+  font-size: 7vw;
+}
+
+.player-name {
+  font-size: 10vw;
+}
+
+.last-games {
+  font-size: 1vw;
+}
+
+.last-games .game {
+  padding: 0.2vw;
 }

@@ -16,6 +16,4 @@ const app = firebase.initializeApp({
 const db = database(app);
 const rebase = Rebase.createClass(db);
 
-
-
 ReactDOM.render(<App rebase={rebase} />, document.getElementById('root'));

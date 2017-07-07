@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
 import logo from './logo.svg';
 import './App.css';
 
@@ -7,7 +8,8 @@ class App extends Component {
     super();
     this.state = {
       cards: [],
-      currentSession: {}
+      currentSession: {},
+      lastSessions: []
     };
   }
 
@@ -17,37 +19,68 @@ class App extends Component {
       state: 'cards',
       asArray: true
     });
-    this.props.rebase.bindToState('current_session', {
+    this.props.rebase.bindToState('/games/ping-pong/current_session', {
       context: this,
       state: 'currentSession'
-    })
+    });
+    this.props.rebase.bindToState('/games/ping-pong/sessions', {
+      context: this,
+      asArray: true,
+      state: 'lastSessions',
+      queries: {
+        orderByChild: 'session_ended',
+        limitToLast: 5
+      }
+    });
   }
 
   render() {
-    console.log(this.state.cards);
-    console.log(this.state.currentSession);
+    const { currentSession, cards, lastSessions } = this.state;
+    const { session_started: sessionStarted, players: playersObject = {} } = currentSession;
+    const players = Object.values(playersObject);
+    console.log(lastSessions);
     return (
       <div className="App">
-        <div>
-          {this.state.currentSession.session_started ?
+        <div
+          className={classNames(
+            "game-status",
+            sessionStarted ? "game-active": "game-waiting"
+          )}
+        >
+          {sessionStarted ?
             "Game in progress" : "Waiting for players.."
           }
         </div>
-        <div>
-          Player 1: {
-            (this.state.currentSession.players &&
-            this.state.currentSession.players.length > 0) ?
-            this.state.currentSession.players[0].slack_first_name :
-            "Not registered"
-          }
+        <div className="player">
+          Player 1: <span className="player-name">
+            {
+              (players &&
+              players.length > 0) ?
+              players[0].slack_first_name :
+              "––"
+            }
+          </span>
         </div>
-        <div>
-          Player 2: {
-            (this.state.currentSession.players &&
-            this.state.currentSession.players.length > 1) ?
-            this.state.currentSession.players[1].slack_first_name :
-            "Not registered"
-          }
+        <hr />
+        <div className="player">
+          Player 2: <span className="player-name">
+            {
+              (currentSession.players &&
+              players.length > 1) ?
+              players[1].slack_first_name :
+              "––"
+            }
+          </span>
+        </div>
+        <hr/>
+        <div className="last-games">
+          {lastSessions.map((session) => (
+            <div className="game" key={session.key}>
+              {session.winner.card_uid}
+              {" vs. "}
+              {session.loser.card_uid}
+            </div>
+          ))}
         </div>
       </div>
     );
