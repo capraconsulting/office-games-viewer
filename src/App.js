@@ -116,8 +116,10 @@ class App extends Component {
             <div className="highscore">
               {
                 topTenRating ?
-                  topTenRating.reverse().map((player, index) => (
-                    <Player index={index} id={player.key} key={player.key} rebase={this.props.rebase} />
+                  topTenRating.sort(function(a, b) {
+                    return b.rating - a.rating;
+                  }).map((player, index) => (
+                    <Player index={index} id={player.key} key={player.key} rating={player.rating} rebase={this.props.rebase} />
                   ))
                   : "Loading"
               }

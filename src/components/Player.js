@@ -14,8 +14,7 @@ class Player extends React.Component {
 
   getPlayer = (userId) => {
     this.props.rebase.fetch(`/players/${userId}`, {
-      context: this,
-      asArray: true,
+      context: this
     }).then((player) => {
       console.log("player", player);
       this.setState({player})
@@ -25,7 +24,7 @@ class Player extends React.Component {
   render() {
     return (
       <div>
-        {this.props.index}. {this.state.player[2]}
+        {this.props.index+1}. {this.state.player.slack_first_name} - {this.props.rating}
       </div>
     )
   }
