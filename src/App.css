@@ -22,6 +22,14 @@
 
 .player-name {
   font-size: 10vw;
+  line-height: 10vw;
+}
+
+.player-avatar {
+  width: 10vw;
+  margin: 0;
+  margin-bottom: -1.5vw;
+  margin-left: 3vw;
 }
 
 .last-games {

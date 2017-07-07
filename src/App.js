@@ -52,25 +52,27 @@ class App extends Component {
           }
         </div>
         <div className="player">
-          Player 1: <span className="player-name">
-            {
-              (players &&
-              players.length > 0) ?
-              players[0].slack_first_name :
-              "––"
-            }
-          </span>
+          Player 1:
+          {
+            (players &&
+            players.length > 0) ?
+            <span className="player-name">
+              <img className="player-avatar" src={players[0].slack_avatar_url} /> {players[0].slack_first_name}
+            </span> :
+            "––"
+          }
         </div>
         <hr />
         <div className="player">
-          Player 2: <span className="player-name">
-            {
-              (currentSession.players &&
-              players.length > 1) ?
-              players[1].slack_first_name :
-              "––"
-            }
-          </span>
+          Player 2:
+          {
+            (players &&
+            players.length > 1) ?
+            <span className="player-name">
+              <img className="player-avatar" src={players[1].slack_avatar_url} /> {players[1].slack_first_name}
+            </span> :
+            "––"
+          }
         </div>
         <hr/>
         <div className="last-games">
