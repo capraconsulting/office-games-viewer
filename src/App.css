@@ -48,5 +48,12 @@
 .highscore {
   font-size: 4.5vw;
   text-align: left;
-  margin-left: 14vw;
+  margin-left: 6vw;
+}
+
+.player-name-and-score {
+  overflow: hidden;
+  white-space: nowrap;
+  height: 4.5vw;
+  line-height: 4.5vw;
 }
