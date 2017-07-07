@@ -88,7 +88,7 @@ class App extends Component {
               <span className="loser">
                 {findPlayer(allPlayers, session.loser.card_uid).slack_first_name}
               </span>
-              {" "}({moment(session.session_ended).fromNow()})
+              {" "}({moment.utc(session.session_ended).fromNow()})
             </div>
           ))}
         </div>
