@@ -1,0 +1,57 @@
+{
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "extends": "airbnb",
+  "rules": {
+    "arrow-body-style": 0,
+    "arrow-parens": 0,
+    "class-methods-use-this": 1,
+    "curly": 0,
+    "comma-dangle": [0, "always-multiline"],
+    "comma-spacing": 0,
+    "eqeqeq": [2, "allow-null"],
+    "key-spacing": 0,
+    "max-len": 1,
+    "no-console": 0,
+    "no-nested-ternary": 1,
+    "no-param-reassign": 1,
+    "no-underscore-dangle": 0,
+    "no-unused-expressions": 0,
+    "no-unused-vars": 1,
+    "no-shadow": 0,
+    "no-shadow-restricted-names": 0,
+    "no-extend-native": 0,
+    "no-var": 2,
+    "new-cap": 0,
+    "quotes": 0,
+    "quote-props": 1,
+    "import/prefer-default-export": 1,
+    "react/jsx-filename-extension": 0,
+    "react/sort-comp": 0,
+    "semi-spacing": 0,
+    "space-unary-ops": 0,
+    "space-infix-ops": 0,
+    "consistent-return": 0,
+    "strict": 0,
+    "no-use-before-define": [2, "nofunc"],
+    "jsx-a11y/no-static-element-interactions": 1
+  },
+  "globals": {
+    "SyntheticInputEvent": false
+  },
+  "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
+  "ecmaFeatures": {
+    "jsx": true
+  },
+  "settings": {
+    "import/ignore": ["(scss|css)$"]
+  }
+}
+

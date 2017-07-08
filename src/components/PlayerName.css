@@ -1,0 +1,14 @@
+.player-name {
+  font-size: 2.8vw;
+  line-height: 2.8vw;
+}
+
+.player-name.compact {
+  font-size: 1.5vw;
+  line-height: 1.5vw;
+}
+
+.player-name.display-vertical.compact {
+  font-size: 1.5vw;
+  line-height: 1.5vw;
+}

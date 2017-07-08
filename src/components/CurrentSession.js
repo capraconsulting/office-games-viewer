@@ -1,69 +1,77 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Row, Col } from 'react-flexbox-grid';
 import classNames from 'classnames';
 
-class CurrentSession extends React.Component {
+import List from 'material-ui/List/List';
+import AppBar from 'material-ui/AppBar';
+import CircularProgress from 'material-ui/CircularProgress';
+
+import LoadingCircle from './LoadingCircle';
+import Player from './Player';
+
+import './CurrentSession.css';
+
+class CurrentSession extends Component {
   constructor() {
     super();
     this.state = {
+      isLoading: true,
       currentSession: {
-          sessionPlayers: {}
+        sessionStarted: false,
+        players: []
       }
     };
   }
 
   componentDidMount() {
-    this.props.rebase.bindToState('/games/ping-pong/current_session', {
+    this.props.rebase.bindToState('/games/ping-pong/current_session_2', {
       context: this,
-      state: 'currentSession'
+      state: 'currentSession',
+      then: () => {
+        this.state.isLoading = false;
+      }
     });
-   }
+  }
 
   render() {
-    const { currentSession } = this.state;
-    if (currentSession) {
-        const { session_started: sessionStarted, sessionPlayers: sessionPlayersObject = {} } = currentSession;
-    } else {
-        // TODO
-    }
-    const sessionStarted = false;
-    const sessionPlayers = false;
-    console.log(this.state);
+    const { isLoading, currentSession } = this.state;
+    const { session_started: sessionStarted, players: playersObject = {} } = currentSession;
+    const players = Object.values(playersObject);
     return (
-        <div>
-            <div
-                className={classNames(
-                "game-status",
-                sessionStarted ? "game-active": "game-waiting"
-                )}
-            >
-                {sessionStarted ?
-                "Game in progress" : "Waiting for players..."
-                }
-            </div>
-            <div className="player">
-                Player 1:
-                {
-                (sessionPlayers &&
-                sessionPlayers.length > 0) ?
-                <span className="player-name">
-                    <img className="player-avatar" src={sessionPlayers[0].slack_avatar_url} /> {sessionPlayers[0].slack_first_name}
-                </span> :
-                "––"
-                }
-            </div>
-            <hr />
-            <div className="player">
-                Player 2:
-                {
-                (sessionPlayers &&
-                sessionPlayers.length > 1) ?
-                <span className="player-name">
-                    <img className="player-avatar" src={sessionPlayers[1].slack_avatar_url} /> {sessionPlayers[1].slack_first_name}
-                </span> :
-                "––"
-                }
-            </div>
-        </div>
+      <div>
+        <AppBar
+          title={sessionStarted ?
+            "Game in progress" : "Waiting for players..."
+          }
+          showMenuIconButton={false}
+          className={classNames(
+            "header",
+            "game-status",
+            sessionStarted ? "game-active": "game-waiting"
+          )}
+        />
+        <List>
+          {
+            !isLoading ?
+              <div>
+                <Row center="xs">
+                  <Col xs={7}>
+                    <Player player={players[0]} />
+                  </Col>
+                </Row>
+                <Row center="xs">
+                  <span className="versus-text">───── VS ─────</span>
+                </Row>
+                <Row center="xs">
+                  <Col xs={7}>
+                    <Player player={players[1]} />
+                  </Col>
+                </Row>
+              </div>
+            : <LoadingCircle />
+          }
+        </List>
+      </div>
     );
   }
 }

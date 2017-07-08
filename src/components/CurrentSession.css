@@ -1,0 +1,22 @@
+.game-status {
+  font-size: 6vw;
+  text-align: center;
+}
+
+.game-active {
+  background-color: #009900;
+}
+
+.game-waiting {
+  background-color: red;
+}
+
+.player-registered {
+  background-color: #009900;
+}
+
+.versus-text {
+    color: #DDD;
+    font-style: italic;
+    font-size: 2.5vw;
+}

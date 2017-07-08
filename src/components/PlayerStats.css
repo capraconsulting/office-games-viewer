@@ -1,0 +1,34 @@
+.player-stats {
+  font-size: 1.2vw;
+  line-height: 1.2vw;
+  margin-top: 0.5vw;
+  color: #888;
+}
+
+.player-stats.compact {
+  font-size: 1.4vw;
+  line-height: 1.4vw;
+  margin-top: 0;
+}
+
+.player-stats.display-vertical.compact {
+  font-size: 1.0vw;
+  line-height: 1.0vw;
+  margin-top: 0.8vh;
+}
+
+.player-wins {
+  color: green;
+}
+
+.player-losses {
+  color: red;
+}
+
+.player-rating-delta.positive {
+  color: green;
+}
+
+.player-rating-delta.negative {
+  color: red;
+}

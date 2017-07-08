@@ -1,0 +1,19 @@
+.player-avatar {
+  color: rgb(255, 255, 255);
+  background-color: rgb(188, 188, 188);
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 100%;
+}
+
+.player-avatar.compact {
+  width: 100%;
+}
+
+
+.player-avatar.display-vertical.compact {
+  width: 2vw;
+}
