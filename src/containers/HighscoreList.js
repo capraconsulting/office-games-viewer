@@ -9,7 +9,7 @@ import Player from '../components/Player/Player';
 
 import './HighscoreList.css';
 
-const MINIMUM_GAMES = 4;
+const MINIMUM_GAMES = 10;
 const AMOUNT_OF_PLAYERS = 10;
 
 class HighscoreList extends Component {
