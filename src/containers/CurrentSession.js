@@ -22,7 +22,7 @@ class CurrentSession extends Component {
   }
 
   componentDidMount() {
-    this.props.rebase.bindToState('/games/ping-pong/current_session_2', {
+    this.props.rebase.bindToState('/games/ping-pong/current_session', {
       context: this,
       state: 'currentSession',
       then: () => {
