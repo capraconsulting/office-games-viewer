@@ -1,0 +1,9 @@
+.session-history-item {
+    padding: 0.345vw;
+}
+
+.session-history-date {
+    color: #888;
+    font-size: 1vw;
+    font-style: italic;
+}

@@ -7,6 +7,7 @@ type Props = {
   horizontal: boolean;
   compact: boolean,
   fromSession: boolean,
+  rightToLeft: boolean,
   player: Object
 };
 
@@ -18,12 +19,13 @@ class PlayerStats extends Component {
   };
 
   render() {
-    const { horizontal, compact, fromSession, player } = this.props;
+    const { horizontal, compact, fromSession, rightToLeft, player } = this.props;
     return (
       <div
         className={classNames(
           "player-stats",
           horizontal ? "display-horizontal" : "display-vertical",
+          rightToLeft ? "display-right-to-left" : "display-left-to-right",
           compact ? "compact" : ""
         )}
       >

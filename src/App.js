@@ -3,10 +3,10 @@ import { Row, Col } from 'react-flexbox-grid';
 
 import './App.css';
 
-import LoadingCircle from './components/LoadingCircle';
-import CurrentSession from './components/CurrentSession';
-import SessionHistoryList from './components/SessionHistoryList';
-import HighscoreList from './components/HighscoreList';
+import LoadingCircle from './components/Misc/LoadingCircle';
+import CurrentSession from './containers/CurrentSession';
+import SessionHistoryList from './containers/SessionHistoryList';
+import HighscoreList from './containers/HighscoreList';
 
 class App extends Component {
   constructor() {
@@ -22,7 +22,9 @@ class App extends Component {
       context: this,
       state: 'players',
       then: () => {
-        this.state.isLoading = false;
+        this.setState({
+          isLoading: false
+        });
       }
     });
   }

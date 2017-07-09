@@ -9,10 +9,7 @@ import './Player.css';
 
 type Props = {
   horizontal: boolean,
-  compact: boolean,
-  fromSession: boolean,
-  rightToLeft: boolean, 
-  player: Object,
+  rightToLeft: boolean
 };
 
 class Player extends Component {

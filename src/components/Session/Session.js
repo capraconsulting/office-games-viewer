@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-flexbox-grid';
-import moment from 'moment';
 
-import { findPlayer } from '../utils';
+import { findPlayer } from '../../utils';
 
-import Player from './Player';
+import Player from '../Player/Player';
 
 import './Session.css';
 
@@ -18,10 +17,9 @@ class Session extends Component {
 
   render() {
     const { players, session } = this.props;
-    console.log(findPlayer(players, session.winner));
     return (
-      <Row middle="xs">
-        <Col xs={5} className="session-winner" style={{ float: 'right' }}>
+      <Row middle="xs" center="xs">
+        <Col xs={5} className="session-winner" style={{ textAlign: 'right' }}>
           <Player
             compact
             fromSession
@@ -29,8 +27,8 @@ class Session extends Component {
             player={findPlayer(players, session.winner)}
           />
         </Col>
-        <Col xs={2}>
-          <span className="versus-winner-text">vant mot</span>
+        <Col xs={2} className="versus-winner-text">
+          <span >vant mot</span>
         </Col>
         <Col xs={5} className="session-loser">
           <Player

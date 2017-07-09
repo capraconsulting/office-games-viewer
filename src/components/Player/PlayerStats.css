@@ -1,7 +1,7 @@
 .player-stats {
   font-size: 1.2vw;
   line-height: 1.2vw;
-  margin-top: 0.5vw;
+  margin-top: 0.6vw;
   color: #888;
 }
 
@@ -15,6 +15,15 @@
   font-size: 1.0vw;
   line-height: 1.0vw;
   margin-top: 0.8vh;
+}
+
+
+.player-stats.display-right-to-left.compact {
+  text-align: right;
+}
+
+.player-stats.display-left-to-right.compact {
+  text-align: left;
 }
 
 .player-wins {

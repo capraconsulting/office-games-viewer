@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import classNames from 'classnames';
+import { Row, Col } from 'react-flexbox-grid';
+import * as moment from 'moment';
+import 'moment/locale/nb';
 
 import Divider from 'material-ui/Divider';
 import List from 'material-ui/List/List';
-import AppBar from 'material-ui/AppBar';
-import CircularProgress from 'material-ui/CircularProgress';
 
-import LoadingCircle from './LoadingCircle';
-import Session from './Session';
+import LoadingCircle from '../components/Misc/LoadingCircle';
+import WidgetHeader from '../components/Widget/WidgetHeader';
+import Session from '../components/Session/Session';
 
 import './SessionHistoryList.css';
 
+moment.locale('nb');
 const AMOUNT_OF_SESSIONS = 5;
 
 class SessionHistoryList extends Component {
@@ -32,7 +34,9 @@ class SessionHistoryList extends Component {
         limitToLast: 10
       },
       then: () => {
-        this.state.isLoading = false;
+        this.setState({
+          isLoading: false
+        });
       }
     });
   }
@@ -42,21 +46,18 @@ class SessionHistoryList extends Component {
     const { players } = this.props;
     return (
       <div>
-        <AppBar
-          title={`Siste ${AMOUNT_OF_SESSIONS} Spill`}
-          showMenuIconButton={false}
-          className={classNames(
-            "header",
-            "session-history-header"
-          )}
-        />
-
+        <WidgetHeader title={`Siste ${AMOUNT_OF_SESSIONS} spill`} />
         <List>
           {
             !isLoading ?
               sessionHistory.reverse().slice(0, AMOUNT_OF_SESSIONS).map((session, index) => (
                 <div key={`SessionHistoryList-${session.key}`}>
-                  <div className="highscore-list-item">
+                  <div className="session-history-item">
+                    <Row middle={'xs'} center={'xs'} className="session-history-date">
+                      <Col xs={12}>
+                        <span>{moment.utc(session.session_ended).fromNow()}</span>
+                      </Col>
+                    </Row>
                     <Session players={players} session={session} />
                   </div>
                   <Divider />

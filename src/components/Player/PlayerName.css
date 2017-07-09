@@ -12,3 +12,11 @@
   font-size: 1.5vw;
   line-height: 1.5vw;
 }
+
+.player-name.display-right-to-left.compact {
+  text-align: right;
+}
+
+.player-name.display-left-to-right.compact {
+  text-align: left;
+}

@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-flexbox-grid';
-import classNames from 'classnames';
 
 import List from 'material-ui/List/List';
-import AppBar from 'material-ui/AppBar';
-import CircularProgress from 'material-ui/CircularProgress';
 
-import LoadingCircle from './LoadingCircle';
-import Player from './Player';
+import LoadingCircle from '../components/Misc/LoadingCircle';
+import WidgetHeader from '../components/Widget/WidgetHeader';
+import Player from '../components/Player/Player';
 
 import './CurrentSession.css';
 
@@ -28,7 +26,9 @@ class CurrentSession extends Component {
       context: this,
       state: 'currentSession',
       then: () => {
-        this.state.isLoading = false;
+        this.setState({
+          isLoading: false
+        });
       }
     });
   }
@@ -38,25 +38,23 @@ class CurrentSession extends Component {
     const { session_started: sessionStarted, players: playersObject = {} } = currentSession;
     const players = Object.values(playersObject);
     return (
-      <div>
-        <AppBar
-          title={sessionStarted ?
-            "Game in progress" : "Waiting for players..."
-          }
-          showMenuIconButton={false}
-          className={classNames(
-            "header",
-            "game-status",
-            sessionStarted ? "game-active": "game-waiting"
-          )}
+      <div className="current-session-widget">
+        <WidgetHeader
+          title={sessionStarted ? "Spill pågår" : "Venter på spillere..."}
         />
         <List>
           {
             !isLoading ?
-              <div>
+              <div className="current-session-list">
                 <Row center="xs">
                   <Col xs={7}>
-                    <Player player={players[0]} />
+                    {
+                      players[0] ? (
+                        <Player player={players[0]} />
+                      ): (
+                        <span className="missing-player-text">?</span>
+                      )
+                    }
                   </Col>
                 </Row>
                 <Row center="xs">
@@ -64,7 +62,13 @@ class CurrentSession extends Component {
                 </Row>
                 <Row center="xs">
                   <Col xs={7}>
-                    <Player player={players[1]} />
+                    {
+                      players[1] ? (
+                        <Player player={players[1]} />
+                      ): (
+                        <span className="missing-player-text">?</span>
+                      )
+                    }
                   </Col>
                 </Row>
               </div>

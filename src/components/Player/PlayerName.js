@@ -6,6 +6,7 @@ import './PlayerName.css';
 type Props = {
   horizontal: boolean,
   compact: boolean,
+  rightToLeft: boolean,
   player: Object
 };
 
@@ -13,12 +14,13 @@ class PlayerName extends Component {
   props: Props
 
   render() {
-    const { horizontal, compact, player } = this.props;
+    const { horizontal, compact, rightToLeft, player } = this.props;
     return (
       <div
         className={classNames(
           "player-name",
           horizontal ? "display-horizontal" : "display-vertical",
+          rightToLeft ? "display-right-to-left" : "display-left-to-right",
           compact ? "compact" : ""
         )}
       >

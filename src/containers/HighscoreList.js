@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { Row, Col } from 'react-flexbox-grid';
 import Divider from 'material-ui/Divider';
 import List from 'material-ui/List/List';
-import AppBar from 'material-ui/AppBar';
-import CircularProgress from 'material-ui/CircularProgress';
 
-import LoadingCircle from './LoadingCircle';
-import Player from './Player';
+import LoadingCircle from '../components/Misc/LoadingCircle';
+import WidgetHeader from '../components/Widget/WidgetHeader';
+import Player from '../components/Player/Player';
 
 import './HighscoreList.css';
 
@@ -32,7 +31,9 @@ class HighscoreList extends Component {
         orderByChild: 'rating'
       },
       then: () => {
-        this.state.isLoading = false;
+        this.setState({
+          isLoading: false
+        });
       }
     });
   }
@@ -40,15 +41,9 @@ class HighscoreList extends Component {
   render() {
     const { isLoading, playerStatistics } = this.state;
     const { players } = this.props;
-    console.log(playerStatistics);
-    console.log(players);
     return (
       <div>
-        <AppBar
-          title={"Highscore"}
-          showMenuIconButton={false}
-          className={"header"}
-        />
+        <WidgetHeader title={`Highscore`} />
         <List>
           {
             !isLoading ?
@@ -58,7 +53,7 @@ class HighscoreList extends Component {
                 <div key={`HighscoreList-${playerStatistic.key}`}>
                   <div className="highscore-list-item">
                     <Row middle="xs">
-                      <Col xs={1}>
+                      <Col xs={1} className="highscore-list-index">
                         <span>#{index + 1}</span>
                       </Col>
                       <Col xs={11}>

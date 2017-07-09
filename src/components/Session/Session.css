@@ -1,0 +1,9 @@
+.session-winner {
+    text-align: 'right';
+}
+
+.versus-winner-text {
+    font-style: italic;
+    font-size: 1.5vw;
+    text-align: center;
+}
