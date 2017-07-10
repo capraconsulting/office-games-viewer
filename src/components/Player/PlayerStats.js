@@ -31,19 +31,19 @@ class PlayerStats extends Component {
       >
         { fromSession ? (
           <span>
-            <span className="player-rating">Rating: {player.rating_after} </span>
+            <span className="player-rating">Rating: {player.elo_rating.after} </span>
             <span
               className={classNames(
                 "player-rating-delta",
-                player.rating_delta > 0 ? "positive" : "negative"
+                player.elo_rating.delta > 0 ? "positive" : "negative"
               )}
             >
-            ({player.rating_delta > 0 ? '+' : ''}{player.rating_delta})
+            ({player.elo_rating.delta > 0 ? '+' : ''}{player.elo_rating.delta})
             </span>
           </span>
         ) : (
           <span>
-            <span className="player-rating">Rating: {player.rating}</span>
+            <span className="player-rating">Rating: {player.elo_rating}</span>
             <span> (</span>
             <span className="player-wins">{player.games_won} vinn</span>
             <span> | </span>

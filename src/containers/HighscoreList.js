@@ -28,7 +28,7 @@ class HighscoreList extends Component {
       asArray: true,
       state: 'playerStatistics',
       queries: {
-        orderByChild: 'rating'
+        orderByChild: 'elo_rating'
       },
       then: () => {
         this.setState({
