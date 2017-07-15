@@ -7,6 +7,7 @@ import Divider from 'material-ui/Divider';
 import List from 'material-ui/List/List';
 
 import LoadingCircle from '../components/Misc/LoadingCircle';
+import TrueSkillIcon from '../components/Misc/TrueSkillIcon';
 import WidgetHeader from '../components/Widget/WidgetHeader';
 import Session from '../components/Session/Session';
 
@@ -56,6 +57,11 @@ class SessionHistoryList extends Component {
                     <Row middle={'xs'} center={'xs'} className="session-history-date">
                       <Col xs={12}>
                         <span>{moment.utc(session.session_ended).fromNow()}</span>
+                      </Col>
+                    </Row>
+                    <Row middle={'xs'} center={'xs'} className="session-history-quality">
+                      <Col xs={12}>
+                        <span><TrueSkillIcon quality={session.trueskill_quality} /></span>
                       </Col>
                     </Row>
                     <Session players={players} session={session} />

@@ -1,0 +1,13 @@
+.trueskill-wrapper {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.trueskill-icon {
+    width: 1vw;
+}
+
+.trueskill-icon-quality {
+    padding-left: 0.3vw;
+}

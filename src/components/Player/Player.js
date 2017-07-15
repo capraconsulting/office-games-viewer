@@ -33,10 +33,10 @@ class Player extends Component {
               <PlayerAvatar {...this.props} />
             </Col>
           )}
-          <Col xs={5}>
+          <Col xs={4}>
             <PlayerName {...this.props} />
           </Col>
-          <Col xs={6}>
+          <Col xs={7}>
             <PlayerStats {...this.props} />
           </Col>
           {rightToLeft && (

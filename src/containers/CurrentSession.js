@@ -4,6 +4,7 @@ import { Row, Col } from 'react-flexbox-grid';
 import List from 'material-ui/List/List';
 
 import LoadingCircle from '../components/Misc/LoadingCircle';
+import TrueSkillIcon from '../components/Misc/TrueSkillIcon';
 import WidgetHeader from '../components/Widget/WidgetHeader';
 import Player from '../components/Player/Player';
 
@@ -40,7 +41,10 @@ class CurrentSession extends Component {
     return (
       <div className="current-session-widget">
         <WidgetHeader
-          title={sessionStarted ? "Spill pågår" : "Venter på spillere..."}
+          title={sessionStarted
+            ? <span>Spill pågår · <TrueSkillIcon quality={currentSession.trueskill_quality} /></span>
+            : "Venter på spillere..."
+          }
         />
         <List>
           {
@@ -58,7 +62,7 @@ class CurrentSession extends Component {
                   </Col>
                 </Row>
                 <Row center="xs">
-                  <span className="versus-text">───── VS ─────</span>
+                  <span className="versus-text">───── VS ───── </span>
                 </Row>
                 <Row center="xs">
                   <Col xs={7}>

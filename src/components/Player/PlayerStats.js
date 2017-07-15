@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 
+import TrueSkillIcon from '../Misc/TrueSkillIcon';
+
 import './PlayerStats.css';
 
 type Props = {
@@ -20,6 +22,7 @@ class PlayerStats extends Component {
 
   render() {
     const { horizontal, compact, fromSession, rightToLeft, player } = this.props;
+    console.log(player);
     return (
       <div
         className={classNames(
@@ -31,20 +34,22 @@ class PlayerStats extends Component {
       >
         { fromSession ? (
           <span>
-            <span className="player-rating">Rating: {player.elo_rating.after} </span>
+            <span className="player-rating-icon"><TrueSkillIcon /></span>
+            <span className="player-rating">{Math.round(player.trueskill_rating.mu.after * 100) / 100}μ [{Math.round(player.trueskill_rating.sigma.after * 100) / 100}σ] </span>
             <span
               className={classNames(
                 "player-rating-delta",
-                player.elo_rating.delta > 0 ? "positive" : "negative"
+                player.trueskill_rating.mu.delta > 0 ? "positive" : "negative"
               )}
             >
-            ({player.elo_rating.delta > 0 ? '+' : ''}{player.elo_rating.delta})
+            ({player.trueskill_rating.mu.delta > 0 ? '+' : ''}{Math.round(player.trueskill_rating.mu.delta * 100) / 100}μ)
             </span>
           </span>
         ) : (
           <span>
-            <span className="player-rating">Rating: {player.elo_rating}</span>
-            <span> (</span>
+            <span className="player-rating-icon"><TrueSkillIcon /></span>
+            <span className="player-rating">{Math.round(player.trueskill_rating.mu * 100) / 100}μ [{Math.round(player.trueskill_rating.sigma * 100) / 100}σ] </span>
+            <span>(</span>
             <span className="player-wins">{player.games_won} vinn</span>
             <span> | </span>
             <span className="player-losses"> {player.games_lost} tap</span>
