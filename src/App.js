@@ -34,11 +34,11 @@ class App extends Component {
       <div className="App">
         { !isLoading ? (
           <Row style={{ margin: 0 }}>
-            <Col xs={6}>
+            <Col xs={12} md={6}>
               <CurrentSession rebase={this.props.rebase} />
               <SessionHistoryList rebase={this.props.rebase} players={players} />
             </Col>
-            <Col xs={6}>
+            <Col xs={12} md={6}>
               <HighscoreList rebase={this.props.rebase} players={players} />
             </Col>
           </Row>
