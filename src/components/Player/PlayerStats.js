@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import FontAwesome from 'react-fontawesome';
 
 import TrueSkillIcon from '../Misc/TrueSkillIcon';
 
@@ -48,7 +49,8 @@ class PlayerStats extends Component {
                   muDelta > 0 ? "positive" : "negative"
                 )}
               >
-              ({muDelta > 0 ? '+' : ''}{muDelta})
+                <FontAwesome name={muDelta > 0 ? 'caret-up' : 'caret-down'} />
+                <span> {muDelta}</span>
               </span>
             }
           </span>
