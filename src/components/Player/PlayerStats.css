@@ -45,3 +45,7 @@
 .player-rating-delta.negative {
   color: red;
 }
+
+.player-rating-delta-icon {
+  margin-right: 0.1vw;
+}

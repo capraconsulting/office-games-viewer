@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'react-flexbox-grid';
+import { Switch, Route } from "react-router-dom";
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import './App.css';
 
-import LoadingCircle from './components/Misc/LoadingCircle';
-import CurrentSession from './containers/CurrentSession';
-import SessionHistoryList from './containers/SessionHistoryList';
-import HighscoreList from './containers/HighscoreList';
+import Index from './routes/index';
+import Players from './routes/players';
 
-class App extends Component {
+injectTapEventPlugin();
+
+export default class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -31,23 +33,20 @@ class App extends Component {
   render() {
     const { isLoading, players } = this.state;
     return (
-      <div className="App">
-        { !isLoading ? (
-          <Row style={{ margin: 0 }}>
-            <Col xs={12} md={6}>
-              <CurrentSession rebase={this.props.rebase} />
-              <SessionHistoryList rebase={this.props.rebase} players={players} />
-            </Col>
-            <Col xs={12} md={6}>
-              <HighscoreList rebase={this.props.rebase} players={players} />
-            </Col>
-          </Row>
-        ) : (
-          <LoadingCircle />
-        )}
-      </div>
+      <MuiThemeProvider>
+        <div className="App">
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={(props) => (
+                <Index {...props} rebase={this.props.rebase} />
+              )}
+            />
+            <Route path="/players" component={Players} />
+          </Switch>
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
-
-export default App;

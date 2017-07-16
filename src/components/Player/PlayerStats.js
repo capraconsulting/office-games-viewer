@@ -49,8 +49,8 @@ class PlayerStats extends Component {
                   muDelta > 0 ? "positive" : "negative"
                 )}
               >
-                <FontAwesome name={muDelta > 0 ? 'caret-up' : 'caret-down'} />
-                <span> {muDelta}</span>
+                <FontAwesome className="player-rating-delta-icon" name={muDelta > 0 ? 'caret-up' : 'caret-down'} />
+                <span>{muDelta}</span>
               </span>
             }
           </span>
