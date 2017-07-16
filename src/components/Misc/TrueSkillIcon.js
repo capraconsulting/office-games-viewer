@@ -43,7 +43,7 @@ class PlayerStats extends Component {
       return (
         <div className="trueskill-wrapper">
           <img className="trueskill-icon" src={`./trueskill_${color}.png`} alt="TrueSkill icon" />
-          <span className="trueskill-icon-quality">{Math.round(quality * 100 * 100) / 100}%</span>
+          <span className="trueskill-icon-quality">{Math.floor(quality * 100)}%</span>
         </div>
       );
     }
