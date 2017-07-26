@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { Row, Col } from 'react-flexbox-grid';
 
 import LoadingCircle from '../../components/Misc/LoadingCircle';
-import CurrentSession from '../../containers/CurrentSession';
-import SessionHistoryList from '../../containers/SessionHistoryList';
-import HighscoreList from '../../containers/HighscoreList';
+
+import CurrentSession from './containers/CurrentSession';
+import SessionHistoryList from './containers/SessionHistoryList';
+import HighscoreList from './containers/HighscoreList';
 
 class Dashboard extends Component {
   constructor() {
@@ -26,6 +27,7 @@ class Dashboard extends Component {
       }
     });
   }
+
   render() {
     const { isLoading, players } = this.state;
     return (

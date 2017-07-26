@@ -3,9 +3,10 @@ import { Row, Col } from 'react-flexbox-grid';
 import Divider from 'material-ui/Divider';
 import List from 'material-ui/List/List';
 
-import LoadingCircle from '../components/Misc/LoadingCircle';
+import LoadingCircle from '../../../components/Misc/LoadingCircle';
+import Player from '../../../components/Player/Player';
+
 import WidgetHeader from '../components/Widget/WidgetHeader';
-import Player from '../components/Player/Player';
 
 import './HighscoreList.css';
 
@@ -21,14 +22,13 @@ class HighscoreList extends Component {
     };
   }
 
-
   componentDidMount() {
     this.props.rebase.bindToState('/games/ping-pong/player_statistics', {
       context: this,
       asArray: true,
       state: 'playerStatistics',
       queries: {
-        orderByChild: 'elo_rating'
+        orderByChild: 'elo_rating' // TODO: trueskill order
       },
       then: () => {
         this.setState({

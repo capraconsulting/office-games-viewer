@@ -6,14 +6,14 @@ type Props = { match: Object };
 
 export default class Index extends React.Component {
   render() {
-    const { match } = this.props;
+    const { match, rebase, players } = this.props;
     return (
       <div>
         <Switch>
           <Route
             path={`${match.url}/`}
             render={(props) => (
-              <Dashboard {...props} rebase={this.props.rebase} />
+              <Dashboard {...props} rebase={rebase} players={players} />
             )}
           />
         </Switch>

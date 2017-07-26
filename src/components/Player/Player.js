@@ -16,6 +16,7 @@ class Player extends Component {
   props: Props
 
   static defaultProps = {
+    displayStats: true,
     horizontal: false,
     compact: false,
     fromSession: false,
@@ -23,7 +24,7 @@ class Player extends Component {
   };
 
   render() {
-    const { horizontal, rightToLeft } = this.props;
+    const { displayStats, horizontal, rightToLeft } = this.props;
 
     if (horizontal) {
       return (
@@ -36,9 +37,11 @@ class Player extends Component {
           <Col xs={5}>
             <PlayerName {...this.props} />
           </Col>
-          <Col xs={6}>
-            <PlayerStats {...this.props} />
-          </Col>
+          {displayStats && (
+            <Col xs={6}>
+              <PlayerStats {...this.props} />
+            </Col>
+          )}
           {rightToLeft && (
             <Col xs={1}>
               <PlayerAvatar {...this.props} />
@@ -60,11 +63,13 @@ class Player extends Component {
               <PlayerName {...this.props} />
             </Col>
           </Row>
-          <Row middle="xs">
-            <Col xs={12}>
-              <PlayerStats {...this.props} />
-            </Col>
-          </Row>
+          {displayStats && (
+            <Row middle="xs">
+              <Col xs={12}>
+                <PlayerStats {...this.props} />
+              </Col>
+            </Row>
+          )}
         </Col>
         {rightToLeft && (
           <Col xs={2}>

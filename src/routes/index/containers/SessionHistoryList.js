@@ -6,10 +6,11 @@ import 'moment/locale/nb';
 import Divider from 'material-ui/Divider';
 import List from 'material-ui/List/List';
 
-import LoadingCircle from '../components/Misc/LoadingCircle';
-import TrueSkillIcon from '../components/Misc/TrueSkillIcon';
+import LoadingCircle from '../../../components/Misc/LoadingCircle';
+import TrueSkillIcon from '../../../components/Misc/TrueSkillIcon';
+import Session from '../../../components/Session/Session';
+
 import WidgetHeader from '../components/Widget/WidgetHeader';
-import Session from '../components/Session/Session';
 
 import './SessionHistoryList.css';
 

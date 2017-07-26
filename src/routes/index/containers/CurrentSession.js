@@ -3,10 +3,11 @@ import { Row, Col } from 'react-flexbox-grid';
 
 import List from 'material-ui/List/List';
 
-import LoadingCircle from '../components/Misc/LoadingCircle';
-import TrueSkillIcon from '../components/Misc/TrueSkillIcon';
+import LoadingCircle from '../../../components/Misc/LoadingCircle';
+import TrueSkillIcon from '../../../components/Misc/TrueSkillIcon';
+import Player from '../../../components/Player/Player';
+
 import WidgetHeader from '../components/Widget/WidgetHeader';
-import Player from '../components/Player/Player';
 
 import './CurrentSession.css';
 
