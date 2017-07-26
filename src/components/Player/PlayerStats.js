@@ -26,7 +26,7 @@ class PlayerStats extends Component {
 
     let muDelta = null;
     if (fromSession) {
-      muDelta = Math.floor(player.trueskill_rating.mu.after) - Math.floor(player.trueskill_rating.mu.before);
+      muDelta = Math.floor(player.trueskill_rating.mu.after * 10) - Math.floor(player.trueskill_rating.mu.before * 10);
     }
 
     return (
@@ -41,7 +41,7 @@ class PlayerStats extends Component {
         { fromSession ? (
           <span>
             <span className="player-rating-icon"><TrueSkillIcon /></span>
-            <span className="player-rating">{Math.floor(player.trueskill_rating.mu.after)} </span>
+            <span className="player-rating">{Math.floor(player.trueskill_rating.mu.after * 10)} </span>
             {muDelta !== 0 &&
               <span
                 className={classNames(
@@ -57,7 +57,7 @@ class PlayerStats extends Component {
         ) : (
           <span>
             <span className="player-rating-icon"><TrueSkillIcon /></span>
-            <span className="player-rating">{Math.floor(player.trueskill_rating.mu)} </span>
+            <span className="player-rating">{Math.floor(player.trueskill_rating.mu * 10)} </span>
             <span>(</span>
             <span className="player-wins">{player.games_won} vinn</span>
             <span> | </span>

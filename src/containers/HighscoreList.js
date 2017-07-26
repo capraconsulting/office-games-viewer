@@ -32,7 +32,12 @@ class HighscoreList extends Component {
       },
       then: () => {
         this.setState({
-          isLoading: false
+          isLoading: false,
+          playerStatistics: this.state.playerStatistics.filter((playerStatistic, index) => (
+                playerStatistic.total_games >= MINIMUM_GAMES
+              )).sort((a, b) => {
+                return b.trueskill_rating.mu - a.trueskill_rating.mu;
+              }).slice(0, AMOUNT_OF_PLAYERS)
         });
       }
     });
@@ -47,9 +52,7 @@ class HighscoreList extends Component {
         <List>
           {
             !isLoading ?
-              playerStatistics.reverse().filter((playerStatistic, index) => (
-                playerStatistic.total_games >= MINIMUM_GAMES
-              )).slice(0, AMOUNT_OF_PLAYERS).map((playerStatistic, index) => (
+              playerStatistics.map((playerStatistic, index) => (
                 <div key={`HighscoreList-${playerStatistic.key}`}>
                   <div className="highscore-list-item">
                     <Row middle="xs">
