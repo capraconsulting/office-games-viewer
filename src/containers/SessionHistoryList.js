@@ -36,8 +36,7 @@ class SessionHistoryList extends Component {
       },
       then: () => {
         this.setState({
-          isLoading: false,
-          sessionHistory: this.state.sessionHistory.reverse().slice(0, AMOUNT_OF_SESSIONS)
+          isLoading: false
         });
       }
     });
@@ -52,7 +51,7 @@ class SessionHistoryList extends Component {
         <List>
           {
             !isLoading ?
-              sessionHistory.map((session, index) => (
+              sessionHistory.reverse().slice(0, AMOUNT_OF_SESSIONS).map((session, index) => (
                 <div key={`SessionHistoryList-${session.key}`}>
                   <div className="session-history-item">
                     <Row middle={'xs'} center={'xs'} className="session-history-date">
