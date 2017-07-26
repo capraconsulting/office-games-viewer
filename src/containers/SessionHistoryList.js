@@ -14,7 +14,7 @@ import Session from '../components/Session/Session';
 import './SessionHistoryList.css';
 
 moment.locale('nb');
-const AMOUNT_OF_SESSIONS = 5;
+const AMOUNT_OF_SESSIONS = 4;
 
 class SessionHistoryList extends Component {
   constructor() {
