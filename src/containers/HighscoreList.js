@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-flexbox-grid';
+import * as moment from 'moment';
 import Divider from 'material-ui/Divider';
 import List from 'material-ui/List/List';
 
@@ -58,12 +59,15 @@ class HighscoreList extends Component {
                       <Col xs={1} className="highscore-list-index">
                         <span>#{index + 1}</span>
                       </Col>
-                      <Col xs={11}>
+                      <Col xs={9}>
                         <Player
                           horizontal
                           compact
                           player={Object.assign(playerStatistic, players[playerStatistic.key])}
                         />
+                      </Col>
+                      <Col xs={1} className="highscore-list-time_played">
+                        <span>{moment.utc(playerStatistic.seconds_played * 1000).format('HH:mm:ss')}</span>
                       </Col>
                     </Row>
                   </div>

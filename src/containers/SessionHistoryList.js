@@ -57,6 +57,8 @@ class SessionHistoryList extends Component {
                     <Row middle={'xs'} center={'xs'} className="session-history-date">
                       <Col xs={12}>
                         <span>{moment.utc(session.session_ended).fromNow()}</span>
+                        <span> - </span>
+                        <span>{moment.utc(session.session_seconds * 1000).format('mm:ss')}</span>
                       </Col>
                     </Row>
                     <Row middle={'xs'} center={'xs'} className="session-history-quality">
